@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/realweather2/static/css/main.935b3f7d.chunk.css",
+    "main.js": "/realweather2/static/js/main.a242b9fc.chunk.js",
+    "main.js.map": "/realweather2/static/js/main.a242b9fc.chunk.js.map",
+    "runtime-main.js": "/realweather2/static/js/runtime-main.06c6b731.js",
+    "runtime-main.js.map": "/realweather2/static/js/runtime-main.06c6b731.js.map",
+    "static/js/2.322d3a78.chunk.js": "/realweather2/static/js/2.322d3a78.chunk.js",
+    "static/js/2.322d3a78.chunk.js.map": "/realweather2/static/js/2.322d3a78.chunk.js.map",
+    "static/js/3.4ae68bb7.chunk.js": "/realweather2/static/js/3.4ae68bb7.chunk.js",
+    "static/js/3.4ae68bb7.chunk.js.map": "/realweather2/static/js/3.4ae68bb7.chunk.js.map",
+    "index.html": "/realweather2/index.html",
+    "static/css/main.935b3f7d.chunk.css.map": "/realweather2/static/css/main.935b3f7d.chunk.css.map",
+    "static/js/2.322d3a78.chunk.js.LICENSE.txt": "/realweather2/static/js/2.322d3a78.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/realweather2/static/media/background1.4f894caa.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.06c6b731.js",
+    "static/js/2.322d3a78.chunk.js",
+    "static/css/main.935b3f7d.chunk.css",
+    "static/js/main.a242b9fc.chunk.js"
+  ]
+}
