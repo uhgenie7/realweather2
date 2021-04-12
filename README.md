@@ -21,11 +21,6 @@ https://uhj1993.github.io/realweather2/
 - [openweather API 사용](https://openweathermap.org/)
 - code number에 따른 날씨 아이콘 switch문으로 변환
 
-# another branch
-
-[weatherstack API 사용](https://weatherstack.com/)
-
-❗weatherstack API는 https가 아닌 http를 제공해주기 때문에 보안상 이슈가 있습니다 
 
 ## 사용한 언어
 
