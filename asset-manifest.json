@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/realweather2/static/css/main.935b3f7d.chunk.css",
-    "main.js": "/realweather2/static/js/main.7d16ea31.chunk.js",
-    "main.js.map": "/realweather2/static/js/main.7d16ea31.chunk.js.map",
+    "main.js": "/realweather2/static/js/main.64f715c8.chunk.js",
+    "main.js.map": "/realweather2/static/js/main.64f715c8.chunk.js.map",
     "runtime-main.js": "/realweather2/static/js/runtime-main.06c6b731.js",
     "runtime-main.js.map": "/realweather2/static/js/runtime-main.06c6b731.js.map",
     "static/js/2.322d3a78.chunk.js": "/realweather2/static/js/2.322d3a78.chunk.js",
@@ -12,12 +12,19 @@
     "index.html": "/realweather2/index.html",
     "static/css/main.935b3f7d.chunk.css.map": "/realweather2/static/css/main.935b3f7d.chunk.css.map",
     "static/js/2.322d3a78.chunk.js.LICENSE.txt": "/realweather2/static/js/2.322d3a78.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/realweather2/static/media/background1.4f894caa.jpg"
+    "static/media/index.css": "/realweather2/static/media/background1.4f894caa.jpg",
+    "static/media/brightness-high-fill.de52be03.svg": "/realweather2/static/media/brightness-high-fill.de52be03.svg",
+    "static/media/cloud-drizzle.13cd5b50.svg": "/realweather2/static/media/cloud-drizzle.13cd5b50.svg",
+    "static/media/cloud-fog-fill.2966a3e2.svg": "/realweather2/static/media/cloud-fog-fill.2966a3e2.svg",
+    "static/media/cloud-lightning-rain-fill.e4752dae.svg": "/realweather2/static/media/cloud-lightning-rain-fill.e4752dae.svg",
+    "static/media/cloud-rain-heavy-fill.6a22f4ed.svg": "/realweather2/static/media/cloud-rain-heavy-fill.6a22f4ed.svg",
+    "static/media/cloud-snow-fill.cbe828fb.svg": "/realweather2/static/media/cloud-snow-fill.cbe828fb.svg",
+    "static/media/cloud.0b9142b5.svg": "/realweather2/static/media/cloud.0b9142b5.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.06c6b731.js",
     "static/js/2.322d3a78.chunk.js",
     "static/css/main.935b3f7d.chunk.css",
-    "static/js/main.7d16ea31.chunk.js"
+    "static/js/main.64f715c8.chunk.js"
   ]
 }
