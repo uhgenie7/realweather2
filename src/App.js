@@ -3,13 +3,6 @@ import './App.css';
 import Axios from 'axios';
 import DisplayData from './components/DisplayData';
 import Navbar from './components/Navbar';
-import Cloudrain from './img/cloud-rain-heavy-fill.svg';
-import CloudLightning from './img/cloud-lightning-rain-fill.svg';
-import Drizzle from './img/cloud-drizzle.svg';
-import CloudSnow from './img/cloud-snow-fill.svg';
-import CloudFog from './img/cloud-fog-fill.svg';
-import Brightness from './img/brightness-high-fill.svg';
-import Cloud from './img/cloud.svg';
 
 class App extends React.Component {
   state = {
@@ -22,103 +15,125 @@ class App extends React.Component {
     changeIcon: [],
   }
 
+
   componentDidMount() {
-    // console.log(this.state.changeIcon);
+    console.log(this.state.changeIcon);
+    // console.log('render mount');
     if (navigator.geolocation) {
+      // console.log('supported');
+      // https://developer.mozilla.org/ko/docs/Web/API/Geolocation_API
         navigator.geolocation.getCurrentPosition((position) => {
+        // console.log(position.coords.latitude, position.coords.longitude);
+          // 변화되는 newCoords
           let newCoords = {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           }
+          // 경도 위도가 바뀌었다면? setState({state의 coords에 newCoords 대체})
           this.setState({ coords: newCoords });
+          // console.log(this.state.coords);
+          // 
           Axios
-            .get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.coords.latitude}&lon=${this.state.coords.longitude}&appid=d943f9271509662f7f579fd2c785114c&units=metric`)
+            .get(`http://api.weatherstack.com/current?access_key=ee067797f36d821de901016b22d25888&query=${this.state.coords.latitude},${this.state.coords.longitude}`)
             .then((res) => {
-              let weatherCode = res.data.weather[0].id;
+              let weatherCode = res.data.current.weather_code;
               switch (weatherCode) {
-                case 200:
-                case 201:
-                case 202:
-                case 210:
-                case 211:
-                case 212:
-                case 221:
-                case 230:
-                case 231:
-                case 232:
-                  this.setState({ changeIcon: CloudLightning })
+                case 113:
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/brightness-high-fill.svg" })
                   break;
-                case 300:
-                case 301:
-                case 302:
-                case 310:
-                case 311:
-                case 312:
-                case 313:
-                case 314:
-                case 321:
-                  this.setState({ changeIcon: Drizzle })
+                case 116:
+                  // this.setState({ changeIcon: "Partly cloudy" })
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud.svg" })
                   break;
-                case 500:
-                case 501:
-                case 502:
-                case 503:
-                case 504:
-                case 511:
-                case 520:
-                case 521:
-                case 522:
-                case 531:
-                  // this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-rain-heavy-fill.svg" })
-                  this.setState({ changeIcon: Cloudrain })
+                case 119: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/clouds-fill.svg" })
                   break;
-                case 600:
-                case 601:
-                case 602:
-                case 611:
-                case 612:
-                case 613:
-                case 615:
-                case 616:
-                case 620:
-                case 621:
-                case 622:
-                  this.setState({ changeIcon: CloudSnow })
+                case 122: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/clouds-fill.svg" })
                   break;
-                case 701:
-                case 711:
-                case 721:
-                case 731:
-                case 741:
-                case 751:
-                case 761:
-                case 771:
-                case 781:
-                  this.setState({ changeIcon: CloudFog })
+                case 143: 
+                  this.setState({ changeIcon: "Mist" })
                   break;
-                case 800:
-                  this.setState({ changeIcon: Brightness })
+                case 176: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-rain-heavy-fill.svg" })
                   break;
-                case 801:
-                case 802:
-                case 803:
-                case 804:
-                  this.setState({ changeIcon: Cloud })
+                case 179: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-snow-heavy-fill.svg" })
+                  break;
+                case 182: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-sleet-fill.svg" })
+                  break;
+                case 185: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/snow2.svg" })
+                  break;
+                case 200: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-lightning-fill.svg" })
+                  break;
+                case 227: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-snow-heavy-fill.svg" })
+                  break;
+                case 230: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-snow-heavy-fill.svg" })
+                  break;
+                case 248: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-fog-fill.svg" })
+                  break;
+                case 260: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-fog-fill.svg" })
+                  break;
+                case 263: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-drizzle-fill.svg" })
+                  break;
+                case 266: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-drizzle-fill.svg" })
+                  break;
+                case 281: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-drizzle-fill.svg" })
+                  break;
+                case 284: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-drizzle-fill.svg" })
+                  break;
+                case 293: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-lightning-rain-fill.svg" })
+                  break;
+                case 296: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-lightning-rain-fill.svg" })
+                  break;
+                case 299: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-drizzle.svg" })
+                  break;
+                case 302: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-drizzle.svg" })
+                  break;
+                case 305: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-rain-heavy-fill.svg" })
+                  break;
+                case 308: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-rain-heavy-fill.svg" })
+                  break;
+                case 311: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-sun-fill.svg" })
                   break;
                 default:
-                  this.setState({ changeIcon: Brightness })
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/brightness-high-fill.svg" })
                   break;
               }
             let weatherData = {
-              temperature: res.data.main.temp,
-              description: res.data.weather[0].description,
-              location: res.data.name,
-              wind_speed: res.data.wind.speed,
-              pressure: res.data.main.pressure,
-              humidity: res.data.main.humidity,
-              feel_like: res.data.main.feels_like,
+              temperature: res.data.current.temperature,
+              description: res.data.current.weather_descriptions[0],
+              location: res.data.location.name,
+              region: res.data.location.region,
+              country: res.data.location.country,
+              wind_speed: res.data.current.wind_speed,
+              pressure: res.data.current.pressure,
+              precip: res.data.current.precip,
+              humidity: res.data.current.humidity,
+              img: res.data.current.weather_icons
+              // img: this.changeIcon
               }
+              // code: res.data.current.weather_code를 읽어와서 code에 맞는 string을 data에 넣어줌...
               this.setState({ data: weatherData })
+              // this.setState({ changeIcon: weatherCode });
           })
       });
     } else {
@@ -128,114 +143,138 @@ class App extends React.Component {
 
   // weather input 검색 change
   change = (value) => {
+    // console.log(value);
     this.setState({ inputData: value });
+    // console.log(this.state.inputData);
+    // this.state.inputData을 api의 쿼리에 넣어줄 거임
   }
   
   changeWeather = (e) => {
     e.preventDefault();
+    // Navbar.js 의 onSubmit을 막아준다.
+    // const checkLocation = {}
+
     Axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.inputData}&appid=d943f9271509662f7f579fd2c785114c&units=metric`)
+      .get(`http://api.weatherstack.com/current?access_key=ee067797f36d821de901016b22d25888&query=${this.state.inputData}`)
       .then((res) => {
-              let weatherCode = res.data.weather[0].id;
+              let weatherCode = res.data.current.weather_code;
               switch (weatherCode) {
-                case 200:
-                case 201:
-                case 202:
-                case 210:
-                case 211:
-                case 212:
-                case 221:
-                case 230:
-                case 231:
-                case 232:
-                  this.setState({ changeIcon: CloudLightning })
+                case 113:
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/brightness-high-fill.svg" })
                   break;
-                case 300:
-                case 301:
-                case 302:
-                case 310:
-                case 311:
-                case 312:
-                case 313:
-                case 314:
-                case 321:
-                  this.setState({ changeIcon: Drizzle })
+                case 116:
+                  // this.setState({ changeIcon: "Partly cloudy" })
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud.svg" })
                   break;
-                case 500:
-                case 501:
-                case 502:
-                case 503:
-                case 504:
-                case 511:
-                case 520:
-                case 521:
-                case 522:
-                case 531:
-                  // this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-rain-heavy-fill.svg" })
-                  this.setState({ changeIcon: Cloudrain })
+                case 119: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/clouds-fill.svg" })
                   break;
-                case 600:
-                case 601:
-                case 602:
-                case 611:
-                case 612:
-                case 613:
-                case 615:
-                case 616:
-                case 620:
-                case 621:
-                case 622:
-                  this.setState({ changeIcon: CloudSnow })
+                case 122: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/clouds-fill.svg" })
                   break;
-                case 701:
-                case 711:
-                case 721:
-                case 731:
-                case 741:
-                case 751:
-                case 761:
-                case 771:
-                case 781:
-                  this.setState({ changeIcon: CloudFog })
+                case 143: 
+                  this.setState({ changeIcon: "Mist" })
                   break;
-                case 800:
-                  this.setState({ changeIcon: Brightness })
+                case 176: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-rain-heavy-fill.svg" })
                   break;
-                case 801:
-                case 802:
-                case 803:
-                case 804:
-                  this.setState({ changeIcon: Cloud })
+                case 179: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-snow-heavy-fill.svg" })
+                  break;
+                case 182: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-sleet-fill.svg" })
+                  break;
+                case 185: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/snow2.svg" })
+                  break;
+                case 200: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-lightning-fill.svg" })
+                  break;
+                case 227: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-snow-heavy-fill.svg" })
+                  break;
+                case 230: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-snow-heavy-fill.svg" })
+                  break;
+                case 248: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-fog-fill.svg" })
+                  break;
+                case 260: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-fog-fill.svg" })
+                  break;
+                case 263: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-drizzle-fill.svg" })
+                  break;
+                case 266: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-drizzle-fill.svg" })
+                  break;
+                case 281: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-drizzle-fill.svg" })
+                  break;
+                case 284: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-drizzle-fill.svg" })
+                  break;
+                case 293: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-lightning-rain-fill.svg" })
+                  break;
+                case 296: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-lightning-rain-fill.svg" })
+                  break;
+                case 299: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-drizzle.svg" })
+                  break;
+                case 302: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-drizzle.svg" })
+                  break;
+                case 305: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-rain-heavy-fill.svg" })
+                  break;
+                case 308: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-rain-heavy-fill.svg" })
+                  break;
+                case 311: 
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/cloud-sun-fill.svg" })
                   break;
                 default:
-                  this.setState({ changeIcon: Brightness })
+                  this.setState({ changeIcon: "http://uhj1993.dothome.co.kr/img/brightness-high-fill.svg" })
                   break;
               }
-              let weatherData = {
-              temperature: res.data.main.temp,
-              description: res.data.weather[0].description,
-              location: res.data.name,
-              wind_speed: res.data.wind.speed,
-              pressure: res.data.main.pressure,
-              humidity: res.data.main.humidity,
-              feel_like: res.data.main.feels_like
+            let weatherData = {
+              temperature: res.data.current.temperature,
+              description: res.data.current.weather_descriptions[0],
+              location: res.data.location.name,
+              region: res.data.location.region,
+              country: res.data.location.country,
+              wind_speed: res.data.current.wind_speed,
+              pressure: res.data.current.pressure,
+              precip: res.data.current.precip,
+              humidity: res.data.current.humidity,
               // img: res.data.current.weather_icons
+              // img: this.changeIcon
               }
-              this.setState({ data: weatherData })
-          })
+        this.setState({ data: weatherData })
+      })
       .catch((error) => {
         alert("검색 결과가 없습니다");
         console.log('fail');
     })
   }
               
+  //   if (true) {
+  //     console.log('hello!');
+  //     console.log(this.state.inputData);
+  //   } else {
+       
+  //   }          
+  // }
+
   render() {
     // console.log(this);
       return(
         <div className="App">
           <div className="container">
             <Navbar changeRegion={this.change} changeWeather={this.changeWeather}/>
-            <DisplayData weather={this.state.data} changeIcon={this.state.changeIcon}/>
+            <DisplayData weather={this.state.data} changeIcon={this.state.changeIcon} />
           </div>
         </div>
       )
